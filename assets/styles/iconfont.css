@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3295663 */
+  src: url('iconfont.woff2?t=1656411231202') format('woff2'),
+       url('iconfont.woff?t=1656411231202') format('woff'),
+       url('iconfont.ttf?t=1656411231202') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bbs-icon-tuichu:before {
+  content: "\e892";
+}
+
+.bbs-icon-diancai:before {
+  content: "\e605";
+}
+
+.bbs-icon-reply:before {
+  content: "\e7ac";
+}
+
+.bbs-icon-dislike:before {
+  content: "\e66f";
+}
+
+.bbs-icon-like:before {
+  content: "\e601";
+}
+
+.bbs-icon-collect:before {
+  content: "\e602";
+}
+
+.bbs-icon-good:before {
+  content: "\e705";
+}
+
+.bbs-icon-hide:before {
+  content: "\e729";
+}
+
+.bbs-icon-like-false1:before {
+  content: "\e8c9";
+}
+
+.bbs-icon-collect-false:before {
+  content: "\e8c7";
+}
+
+.bbs-icon-lock-simple:before {
+  content: "\e600";
+}
+
+.bbs-icon-tag-simple:before {
+  content: "\e65b";
+}
+
+.bbs-icon-comment-simple:before {
+  content: "\e628";
+}
+
+.bbs-icon-top-text:before {
+  content: "\e617";
+}
+
+.bbs-icon-time-simple:before {
+  content: "\e64d";
+}
+
+.bbs-icon-comment:before {
+  content: "\e63a";
+}
+
+.bbs-icon-message:before {
+  content: "\e60d";
+}
+
+.bbs-icon-settings:before {
+  content: "\e608";
+}
+
+.bbs-icon-message-simple:before {
+  content: "\e60e";
+}
+
+.bbs-icon-views:before {
+  content: "\e6a0";
+}
+
+.bbs-icon-like-true:before {
+  content: "\e607";
+}
+
+.bbs-icon-lock:before {
+  content: "\e6c9";
+}
+
+.bbs-icon-views-simple:before {
+  content: "\e609";
+}
+
+.bbs-icon-tag:before {
+  content: "\e887";
+}
+
+.bbs-icon-dislike-true:before {
+  content: "\e6e8";
+}
+
+.bbs-icon-top:before {
+  content: "\e639";
+}
+
+.bbs-icon-settings-simple:before {
+  content: "\e63b";
+}
+
+.bbs-icon-time:before {
+  content: "\e8c5";
+}
+
+.bbs-icon-collect-true:before {
+  content: "\e647";
+}
+
