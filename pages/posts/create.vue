@@ -11,7 +11,7 @@
   import PostsEditor from "../../components/PostsEditor";
 
   export default {
-    components: {PostsEditor}
+    components: {PostsEditor,ForumHeader}
   }
 </script>
 

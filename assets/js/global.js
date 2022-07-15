@@ -22,8 +22,10 @@ let global = {
           return "";
         let cur = new Date().getTime();
         let second = (cur - timestamp) / 1000;
+        console.log(second)
+
         if (second < 0) {
-          return "";
+          return "显示异常";
         } else if (second <= 1) {
           return "刚刚";
         } else if (second <= 5) {
@@ -48,10 +50,10 @@ let global = {
           return Number(oldVal / 1e4).toFixed(1) + '万'
         else
           return oldVal;
-      }
-
-      ,
-
+      },
+      redirect(url) {
+        window.location.href = url;
+      },
       removeAll: function (a, b) {
         //因为splice()方法会改变原始数组，所以使用slice()方法克隆数组，保证原始数组不被改变，方便多次运算
         let aa = a.slice();

@@ -28,7 +28,7 @@ export default {
     {src: '@/plugins/mavon-editor', ssr: false},
     '@/plugins/axios',
     '@/plugins/vueInject',
-    {src: '@/assets/js/global.js', ssr: false},
+    {src: '@/assets/js/global.js', ssr: true},
     {src: "@/plugins/directive.js", ssr: false},
     {src: '@/plugins/echarts.js', ssr: false},
     {src: '@/plugins/echarts-word-cloud.js', ssr: false},
@@ -78,4 +78,7 @@ export default {
     transpile: [/^element-ui/, 'echarts-wordcloud'],
   },
 
+  router: {
+    middleware: ['auth'],
+  },
 }

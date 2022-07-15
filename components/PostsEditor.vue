@@ -171,11 +171,11 @@
           method: this.posts.id ? 'put' : 'post',
           data: this.posts
         }).then((res => {
-            let code = res.data.code;
-            if (code === 0) {
-              window.location.href = this.$route.query.redirect || "/";
-            }
-          }))
+          let code = res.data.code;
+          if (code === 0) {
+            this.global.redirect(this.$route.query.redirect || "/posts/list");
+          }
+        }))
       },
       back() {
         this.$router.go(-1);

@@ -3,15 +3,15 @@
 </template>
 
 <script>
-  import ForumUserCard from './ForumUserCard.vue'
-  import ForumAvatar from "./ForumAvatar";
-
   export default {
     props: {
       time: null,
     },
     computed: {
       prettyTime() {
+        console.log(this)
+        console.log(this.global.prettyTime(this.time))
+        console.log(2)
         return this.global.prettyTime(this.time);
       }
     }

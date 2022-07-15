@@ -11,7 +11,7 @@
       <div class="pagination">
         <el-pagination
           background
-          hide-on-single-page=true
+          :hide-on-single-page="true"
           :current-page="curPage"
           :page-size="pageSize"
           :pager-count="15"

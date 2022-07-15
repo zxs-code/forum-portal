@@ -38,8 +38,9 @@
           case "1":
             this.$refs.myPosts.loadPosts();
             break;
-            case "2":
-              this.$refs.myFav.loadFav();
+          case "2":
+            this.$refs.myFav.loadFav();
+            break;
           case "3":
             this.$refs.history.loadHistory();
             break;

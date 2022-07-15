@@ -27,7 +27,7 @@
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
-          <forum-avatar v-if="user.avatar" :src="user.avatar" :size="100"></forum-avatar>
+          <forum-avatar v-if="user.avatar !== null" :src="user.avatar" :size="100"></forum-avatar>
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -52,36 +52,32 @@
     data() {
       return {
         labelPosition: 'right',
-        user: {
-          id: '1234',
-          username: '1243',
-          nickname: '5213523',
-          gender: 0,
-          birthday: '2002-02-02',
-          avatar: '',
-          signature: ''
-        }
+        user: {}
       };
     },
     methods: {
       loadMyInfo() {
-        this.$axios.get('user/info/myInfo')
-          .then((res) => {
+        this.$axios.get('/user/myInfo')
+          .then(res => {
             if (res.data.code === 0) {
               this.user = res.data.data;
             }
           })
       },
       save() {
-        this.$axios.put('user/info/myInfo',
+        this.$axios.put('/user/myInfo',
           {
             nickname: this.user.nickname,
             gender: this.user.gender,
             birthday: this.user.birthday,
             avatar: this.user.avatar,
             signature: this.user.signature
+          }).then((res) => {
+          if (res.data.code === 0) {
+            this.loadMyInfo();
+            this.$store.dispatch('user/setUserInfo', this.user);
           }
-        )
+        })
       },
       handleAvatarSuccess(res, file) {
         // this.imageUrl = URL.createObjectURL(file.raw);
@@ -89,7 +85,7 @@
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';
         const isPNG = file.type === 'image/png';
-        const isLt2M = file.size / 1024 / 1024 < 2;
+        const isLt2M = file.size / 1024 / 1024 <= 2;
 
         if (!isJPG && !isPNG) {
           this.$message.error('上传头像图片只能是 JPG/PNG 格式!');
@@ -99,11 +95,10 @@
           this.$message.error('上传头像图片大小不能超过 2MB!');
           return false;
         }
-        console.log(file);
         let formData = new FormData();
         formData.append("multipartFile", file);
         this.$axios({
-          url: 'file',
+          url: '/file',
           method: 'post',
           data: formData,
           headers: {'Content-Type': 'multipart/form-data'},
@@ -112,6 +107,9 @@
         });
         return false;
       }
+    },
+    mounted() {
+      this.loadMyInfo();
     },
     components: {ForumAvatar},
   }

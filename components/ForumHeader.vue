@@ -29,14 +29,14 @@
             <forum-avatar slot="reference" :src="avatar"/>
             <forum-user-card :user="user"></forum-user-card>
           </el-popover>
-          <nuxt-link to="/login" style="display: inline-block;padding-top: 10px" v-else>登录</nuxt-link>
+          <nuxt-link to="/login" style="display: inline-block;padding-top: 10px" v-else>注册/登录</nuxt-link>
         </div>
         <div>
           <el-badge :value="200" :max="99" class="item">
             <nuxt-link to="/message">消息</nuxt-link>
           </el-badge>
           <nuxt-link to="/posts/create" style="margin-left: 30px">发帖</nuxt-link>
-          <nuxt-link to="/login" style="color: #409EFF;margin-left: 10px">注册/登录</nuxt-link>
+          <nuxt-link to="/posts/create" style="margin-left: 30px">反馈</nuxt-link>
         </div>
       </div>
     </div>
@@ -56,8 +56,9 @@
     },
     methods: {
       setUserInfo() {
-        if (this.user === undefined) {
-          this.$axios.get('/user/info/simple')
+        let isLogin = this.$store.getters['user/isLogin'](this);
+        if (isLogin && this.user == null) {
+          this.$axios.get('/user/myInfo')
             .then(res => {
               if (res.data.code === 0) {
                 this.$store.dispatch('user/setUserInfo', res.data.data);

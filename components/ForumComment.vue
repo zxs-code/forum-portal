@@ -160,25 +160,26 @@
       //加载评论
       loadComment() {
         this.loadingFail = false;
-        this.loading = true
-        this.$axios.post('comment/list', {
-          resource: {
-            type: this.resourceType,
-            id: this.resourceId
-          },
-          orderBy: this.commentData.cursor.orderBy,
-          next: this.commentData.cursor.next,
-        }).then((res) => {
-          let data = res.data.data;
-          if (data) {
-            this.commentData.cursor = data.cursor;
-            this.commentData.comments = this.commentData.comments.concat(data.comments);
-          } else {
-            this.loadingFail = true;
-          }
-          console.log(this.loadingFail)
-          this.loading = false;
-        })
+        if (!this.loading) {
+          this.loading = true
+          this.$axios.post('comment/list', {
+            resource: {
+              type: this.resourceType,
+              id: this.resourceId
+            },
+            orderBy: this.commentData.cursor.orderBy,
+            next: this.commentData.cursor.next,
+          }).then((res) => {
+            let data = res.data.data;
+            if (data) {
+              this.commentData.cursor = data.cursor;
+              this.commentData.comments = this.commentData.comments.concat(data.comments);
+            } else {
+              this.loadingFail = true;
+            }
+            this.loading = false;
+          })
+        }
       },
       //切换评论顺序
       handleClick(tab, event) {

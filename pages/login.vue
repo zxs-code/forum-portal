@@ -1,7 +1,7 @@
 <template>
   <div class="login_container">
     <div class="login_box">
-      <h1 style="display: flex;justify-content: center;color: white;font-weight: normal" >登录</h1>
+      <h1 style="display: flex;justify-content: center;color: white;font-weight: normal">登录</h1>
       <el-form label-width="0px" class="login_in" ref="loginForm" :model="loginForm" :rules="rules">
         <el-form-item prop="username">
           <el-input type="text" prefix-icon="el-icon-user" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
@@ -52,10 +52,7 @@
               .then((res) => {
                 let code = res.data.code;
                 if (code === 0) {
-                  this.$store.dispatch('user/removeUserInfo');
-                  let url = this.$route.query.redirect || "/";
-                  window.location.href = url;
-                  // this.$router.push(ursil);
+                  this.global.redirect(this.$route.query.redirect || "/");
                 }
               })
           } else {
